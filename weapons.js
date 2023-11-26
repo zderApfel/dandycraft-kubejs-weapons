@@ -4,29 +4,29 @@ StartupEvents.registry('item', e => {
 
     const two_hand_durability_bonus = 1.5;
 
-    const greatsword_tooltip = "Slightly slower than regular swords but with increased damage and durability; two-handed";
+    const greatsword_tooltip = "It's a sword, but great";
     const greatsword_damage_modifier = 1.25;
-    const greatsword_speed_modifier = 0.9;
+    const greatsword_speed_modifier = 1;
 
-    const warhammer_tooltip = "Slightly slower than an axe and can mine stone, more damage"
+    const warhammer_tooltip = "Can mine stone"
     const warhammer_damage_modifier = 1.1;
-    const warhammer_speed_modifier = 0.9;
+    const warhammer_speed_modifier = 1;
     
     const greathammer_damage_modifier = 1.4;
     const greathammer_speed_modifier = 0.8;
-    const greathammer_tooltip = "Slower than a warhammer with more damage; two-handed"
+    const greathammer_tooltip = "It's greater at mining stone"
 
     const spear_damage_modifier = 0.95;
     const spear_speed_modifier = 1;
-    const spear_tooltip = "Same speed as a sword with slightly less damage"
+    const spear_tooltip = "Same speed as a sword with slightly less damage but more reach"
 
     const glaive_damage_modifier = 1.4;
-    const glaive_speed_modifier = 0.94;
-    const glaive_tooltip = "Slower, heavier, and stronger than a spear; two-handed";
+    const glaive_speed_modifier = 0.9;
+    const glaive_tooltip = "Slower and stronger than a spear";
 
     const greataxe_damage_modifier = 1.25;
-    const greataxe_speed_modifier = 0.9;
-    const greataxe_tooltip = "Slower, heavier, and stronger than a regular axe; two-handed";
+    const greataxe_speed_modifier = 1;
+    const greataxe_tooltip = "Heavier, and stronger than a regular axe";
 
     const katana_damage_modifier = 1;
     const katana_speed_modifier = 1.5;
@@ -37,12 +37,12 @@ StartupEvents.registry('item', e => {
     const kopesh_tooltip = "An exotic curved sword"
 
     const rapier_damage_modifier = 0.8;
-    const rapier_speed_modifier = 1.25;
-    const rapier_tooltip = "A fast weapon for the evasive fighter";
+    const rapier_speed_modifier = 1.4;
+    const rapier_tooltip = "*poke* *poke*";
 
     const dagger_damage_modifier = 0.5;
     const dagger_speed_modifier = 1.8;
-    const dagger_tooltip = "A dainty and lightweight blade. Dual wield for maximum slashing power";
+    const dagger_tooltip = "Face it, you won't use this";
 
     //Greatswords
     //Two-handed
