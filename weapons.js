@@ -20,13 +20,17 @@ StartupEvents.registry('item', e => {
     const spear_speed_modifier = 1;
     const spear_tooltip = "Same speed as a sword with slightly less damage"
 
-    const pike_damage_modifier = 1.4;
-    const pike_speed_modifier = 0.94;
-    const pike_tooltip = "Slower, heavier, and stronger than a spear; two-handed";
+    const glaive_damage_modifier = 1.4;
+    const glaive_speed_modifier = 0.94;
+    const glaive_tooltip = "Slower, heavier, and stronger than a spear; two-handed";
 
     const greataxe_damage_modifier = 1.25;
     const greataxe_speed_modifier = 0.9;
     const greataxe_tooltip = "Slower, heavier, and stronger than a regular axe; two-handed";
+
+    const katana_damage_modifier = 1;
+    const katana_speed_modifier = 1.5;
+    const katana_tooltip = "Omae wa, no shindeiru or whatever the weebs say idk"
 
     const kopesh_damage_modifier = 0.9;
     const kopesh_speed_modifier = 1.15;
@@ -36,546 +40,604 @@ StartupEvents.registry('item', e => {
     const rapier_speed_modifier = 1.25;
     const rapier_tooltip = "A fast weapon for the evasive fighter";
 
-    const dagger_damage_modifier = 0.8;
+    const dagger_damage_modifier = 0.5;
     const dagger_speed_modifier = 1.8;
     const dagger_tooltip = "A dainty and lightweight blade. Dual wield for maximum slashing power";
 
     //Greatswords
     //Two-handed
     //Slightly slower than swords but increased damage
-    e.create("golden_greatsword", 'basic')
+    e.create("golden_greatsword", 'sword')
         .displayName("Golden Greatsword")
-        .tool('sword')
+        
         .tier('gold')
-        .group('combat')
-        .attackDamageBaseline(float_modifier(4, greatsword_damage_modifier))
-        .speedBaseline(float_modifier(1.6, greatsword_speed_modifier))
+        
+        .attackDamageBonus(float_modifier(4, greatsword_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, greatsword_speed_modifier)-4)
         .maxDamage(int_modifier(32, two_hand_durability_bonus))
         .tooltip(greatsword_tooltip);
     
-    e.create("wooden_greatsword", 'basic')
+    e.create("wooden_greatsword", 'sword')
         .displayName("Wooden Greatsword")
-        .tool('sword')
+        
         .tier('wood')
-        .group('combat')
-        .attackDamageBaseline(float_modifier(4, greatsword_damage_modifier))
-        .speedBaseline(float_modifier(1.6, greatsword_speed_modifier))
+        
+        .attackDamageBonus(float_modifier(4, greatsword_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, greatsword_speed_modifier)-4)
         .maxDamage(int_modifier(59, two_hand_durability_bonus))
         .tooltip(greatsword_tooltip);
 
-    e.create("stone_greatsword", 'basic')
+    e.create("stone_greatsword", 'sword')
         .displayName("Stone Greatsword")
-        .tool('sword')
+        
         .tier('stone')
-        .group('combat')
-        .attackDamageBaseline(float_modifier(5, greatsword_damage_modifier))
-        .speedBaseline(float_modifier(1.6, greatsword_speed_modifier))
+        
+        .attackDamageBonus(float_modifier(5, greatsword_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, greatsword_speed_modifier)-4)
         .maxDamage(int_modifier(131, two_hand_durability_bonus))
         .tooltip(greatsword_tooltip);
 
-    e.create("iron_greatsword", 'basic')
+    e.create("iron_greatsword", 'sword')
         .displayName("Iron Greatsword")
-        .tool('sword')
+        
         .tier('iron')
-        .group('combat')
-        .attackDamageBaseline(float_modifier(7, greatsword_damage_modifier))
-        .speedBaseline(float_modifier(1.6, greatsword_speed_modifier))
+        
+        .attackDamageBonus(float_modifier(7, greatsword_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, greatsword_speed_modifier)-4)
         .maxDamage(int_modifier(250, two_hand_durability_bonus))
         .tooltip(greatsword_tooltip);
 
-    e.create("diamond_greatsword", 'basic')
+    e.create("diamond_greatsword", 'sword')
         .displayName("Diamond Greatsword")
-        .tool('sword')
+        
         .tier('diamond')
-        .group('combat')
-        .attackDamageBaseline(float_modifier(8, greatsword_damage_modifier))
-        .speedBaseline(float_modifier(1.6, greatsword_speed_modifier))
+        
+        .attackDamageBonus(float_modifier(8, greatsword_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, greatsword_speed_modifier)-4)
         .maxDamage(int_modifier(1561, two_hand_durability_bonus))
         .tooltip(greatsword_tooltip);
 
-    e.create("netherite_greatsword", 'basic')
+    e.create("netherite_greatsword", 'sword')
         .displayName("Netherite Greatsword")
-        .tool('sword')
+        
         .tier('netherite')
-        .group('combat')
-        .attackDamageBaseline(float_modifier(9, greatsword_damage_modifier))
-        .speedBaseline(float_modifier(1.6, greatsword_speed_modifier))
+        
+        .attackDamageBonus(float_modifier(9, greatsword_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, greatsword_speed_modifier)-4)
         .maxDamage(int_modifier(2031, two_hand_durability_bonus))
         .tooltip(greatsword_tooltip);
 
     //Warhammer
     //Slightly slower than an axe and can mine stone, more damage
-    e.create("golden_warhammer", 'basic')
-        .tool('pickaxe')
-        .tier('gold')
-        .group('combat')
+    e.create("golden_warhammer", 'pickaxe')
+        .tier('gold')        
         .displayName("Golden Warhammer")
-        .attackDamageBaseline(float_modifier(7, warhammer_damage_modifier))
-        .speedBaseline(float_modifier(1, warhammer_speed_modifier))
+        .attackDamageBonus(float_modifier(7, warhammer_damage_modifier)-4)
+        .speedBaseline(float_modifier(1, warhammer_speed_modifier)-4)
         .tooltip(warhammer_tooltip);
     
-    e.create("wooden_warhammer", 'basic')
-        .tool('pickaxe')
+    e.create("wooden_warhammer", 'pickaxe')
+        
         .tier('wood')
-        .group('combat')
+        
         .displayName("Wooden Warhammer")
-        .attackDamageBaseline(float_modifier(7, warhammer_damage_modifier))
-        .speedBaseline(float_modifier(0.8, warhammer_speed_modifier))
+        .attackDamageBonus(float_modifier(7, warhammer_damage_modifier)-4)
+        .speedBaseline(float_modifier(0.8, warhammer_speed_modifier)-4)
         .tooltip(warhammer_tooltip);
 
-    e.create("stone_warhammer", 'basic')
-        .tool('pickaxe')
+    e.create("stone_warhammer", 'pickaxe')
+        
         .tier('stone')
-        .group('combat')
+        
         .displayName("Stone Warhammer")
-        .attackDamageBaseline(float_modifier(9, warhammer_damage_modifier))
-        .speedBaseline(float_modifier(0.8, warhammer_speed_modifier))
+        .attackDamageBonus(float_modifier(9, warhammer_damage_modifier)-4)
+        .speedBaseline(float_modifier(0.8, warhammer_speed_modifier)-4)
         .tooltip(warhammer_tooltip);
 
-    e.create("iron_warhammer", 'basic')
-        .tool('pickaxe')
+    e.create("iron_warhammer", 'pickaxe')
+        
         .tier('iron')
-        .group('combat')
+        
         .displayName("Iron Warhammer")
-        .attackDamageBaseline(float_modifier(9, warhammer_damage_modifier))
-        .speedBaseline(float_modifier(0.9, warhammer_speed_modifier))
+        .attackDamageBonus(float_modifier(9, warhammer_damage_modifier)-4)
+        .speedBaseline(float_modifier(0.9, warhammer_speed_modifier)-4)
         .tooltip(warhammer_tooltip);
 
-    e.create("diamond_warhammer", 'basic')
-        .tool('pickaxe')
+    e.create("diamond_warhammer", 'pickaxe')
+        
         .tier('diamond')
-        .group('combat')
+        
         .displayName("Diamond Warhammer")
-        .attackDamageBaseline(float_modifier(9, warhammer_damage_modifier))
-        .speedBaseline(float_modifier(1, warhammer_speed_modifier))
+        .attackDamageBonus(float_modifier(9, warhammer_damage_modifier)-4)
+        .speedBaseline(float_modifier(1, warhammer_speed_modifier)-4)
         .tooltip(warhammer_tooltip);
 
-    e.create("netherite_warhammer", 'basic')
-        .tool('pickaxe')
+    e.create("netherite_warhammer", 'pickaxe')
+        
         .tier('netherite')
-        .group('combat')
+        
         .displayName("Netherite Warhammer")
-        .attackDamageBaseline(float_modifier(10, warhammer_damage_modifier))
-        .speedBaseline(float_modifier(1, warhammer_speed_modifier))
+        .attackDamageBonus(float_modifier(10, warhammer_damage_modifier)-4)
+        .speedBaseline(float_modifier(1, warhammer_speed_modifier)-4)
         .tooltip(warhammer_tooltip);
 
     //Greathammer
     //Two-handed
     //Slower than a warhammer and has more damage
-    e.create("golden_greathammer", 'basic')
-        .tool('pickaxe')
+    e.create("golden_greathammer", 'pickaxe')
+        
         .tier('gold')
-        .group('combat')
+        
         .displayName("Golden Greathammer")
-        .attackDamageBaseline(float_modifier(7, greathammer_damage_modifier))
-        .speedBaseline(float_modifier(1, greathammer_speed_modifier))
+        .attackDamageBonus(float_modifier(7, greathammer_damage_modifier)-4)
+        .speedBaseline(float_modifier(1, greathammer_speed_modifier)-4)
         .maxDamage(int_modifier(32, two_hand_durability_bonus))
         .tooltip(greathammer_tooltip);
 
-    e.create("wooden_greathammer", 'basic')
-        .tool('pickaxe')
+    e.create("wooden_greathammer", 'pickaxe')
+        
         .tier('wood')
-        .group('combat')
+        
         .displayName("Wooden Greathammer")
-        .attackDamageBaseline(float_modifier(7, greathammer_damage_modifier))
-        .speedBaseline(float_modifier(0.8, greathammer_speed_modifier))
+        .attackDamageBonus(float_modifier(7, greathammer_damage_modifier)-4)
+        .speedBaseline(float_modifier(0.8, greathammer_speed_modifier)-4)
         .maxDamage(int_modifier(59, two_hand_durability_bonus))
         .tooltip(greathammer_tooltip);
 
-    e.create("stone_greathammer", 'basic')
-        .tool('pickaxe')
+    e.create("stone_greathammer", 'pickaxe')
+        
         .tier('stone')
-        .group('combat')
+        
         .displayName("Stone Greathammer")
-        .attackDamageBaseline(float_modifier(9, greathammer_damage_modifier))
-        .speedBaseline(float_modifier(0.8, greathammer_speed_modifier))
+        .attackDamageBonus(float_modifier(9, greathammer_damage_modifier)-4)
+        .speedBaseline(float_modifier(0.8, greathammer_speed_modifier)-4)
         .maxDamage(int_modifier(131, two_hand_durability_bonus))
         .tooltip(greathammer_tooltip);
 
-    e.create("iron_greathammer", 'basic')
-        .tool('pickaxe')
+    e.create("iron_greathammer", 'pickaxe')
+        
         .tier('iron')
-        .group('combat')
+        
         .displayName("Iron Greathammer")
-        .attackDamageBaseline(float_modifier(9, greathammer_damage_modifier))
-        .speedBaseline(float_modifier(0.9, greathammer_speed_modifier))
+        .attackDamageBonus(float_modifier(9, greathammer_damage_modifier)-4)
+        .speedBaseline(float_modifier(0.9, greathammer_speed_modifier)-4)
         .maxDamage(int_modifier(250, two_hand_durability_bonus))
         .tooltip(greathammer_tooltip);
 
-    e.create("diamond_greathammer", 'basic')
-        .tool('pickaxe')
+    e.create("diamond_greathammer", 'pickaxe')
+        
         .tier('diamond')
-        .group('combat')
+        
         .displayName("Diamond Greathammer")
-        .attackDamageBaseline(float_modifier(9, greathammer_damage_modifier))
-        .speedBaseline(float_modifier(1, greathammer_speed_modifier))
+        .attackDamageBonus(float_modifier(9, greathammer_damage_modifier)-4)
+        .speedBaseline(float_modifier(1, greathammer_speed_modifier)-4)
         .maxDamage(int_modifier(1561, two_hand_durability_bonus))
         .tooltip(greathammer_tooltip);
 
-    e.create("netherite_greathammer", 'basic')
-        .tool('pickaxe')
+    e.create("netherite_greathammer", 'pickaxe')
+        
         .tier('netherite')
-        .group('combat')
+        
         .displayName("Netherite Greathammer")
-        .attackDamageBaseline(float_modifier(10, greathammer_damage_modifier))
-        .speedBaseline(float_modifier(1, greathammer_speed_modifier))
+        .attackDamageBonus(float_modifier(10, greathammer_damage_modifier)-4)
+        .speedBaseline(float_modifier(1, greathammer_speed_modifier)-4)
         .maxDamage(int_modifier(2031, two_hand_durability_bonus))
         .tooltip(greathammer_tooltip);
 
     //Spear
     //Same speed as a sword with slightly less melee damage
-    e.create("golden_spear", 'basic')
-        .tool('sword')
+    e.create("golden_spear", 'sword')
+        
         .tier('gold')
-        .group('combat')
+        
         .displayName("Golden Spear")
-        .attackDamageBaseline(float_modifier(4, spear_damage_modifier))
-        .speedBaseLine(float_modifier(1.6, spear_speed_modifier))
+        .attackDamageBonus(float_modifier(4, spear_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, spear_speed_modifier)-4)
         .tooltip(spear_tooltip);
 
-    e.create("wooden_spear", 'basic')
-        .tool('sword')
+    e.create("wooden_spear", 'sword')
+        
         .tier('wood')
-        .group('combat')
+        
         .displayName("Wooden Spear")
-        .attackDamageBaseline(float_modifier(4, spear_damage_modifier))
-        .speedBaseLine(float_modifier(1.6, spear_speed_modifier))
+        .attackDamageBonus(float_modifier(4, spear_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, spear_speed_modifier)-4)
         .tooltip(spear_tooltip);
     
-    e.create("stone_spear", 'basic')
-        .tool('sword')
+    e.create("stone_spear", 'sword')
+        
         .tier('stone')
-        .group('combat')
+        
         .displayName("Stone Spear")
-        .attackDamageBaseline(float_modifier(5, spear_damage_modifier))
-        .speedBaseLine(float_modifier(1.6, spear_speed_modifier))
+        .attackDamageBonus(float_modifier(5, spear_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, spear_speed_modifier)-4)
         .tooltip(spear_tooltip);
 
-    e.create("iron_spear", 'basic')
-        .tool('sword')
+    e.create("iron_spear", 'sword')
+        
         .tier('iron')
-        .group('combat')
+        
         .displayName("Iron Spear")
-        .attackDamageBaseline(float_modifier(6, spear_damage_modifier))
-        .speedBaseLine(float_modifier(1.6, spear_speed_modifier))
+        .attackDamageBonus(float_modifier(6, spear_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, spear_speed_modifier)-4)
         .tooltip(spear_tooltip);
 
-    e.create("diamond_spear", 'basic')
-        .tool('sword')
+    e.create("diamond_spear", 'sword')
+        
         .tier('diamond')
-        .group('combat')
+        
         .displayName("Diamond Spear")
-        .attackDamageBaseline(float_modifier(7, spear_damage_modifier))
-        .speedBaseLine(float_modifier(1.6, spear_speed_modifier))
+        .attackDamageBonus(float_modifier(7, spear_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, spear_speed_modifier)-4)
         .tooltip(spear_tooltip);
 
-    e.create("netherite_spear", 'basic')
-        .tool('sword')
+    e.create("netherite_spear", 'sword')
+        
         .tier('netherite')
-        .group('combat')
+        
         .displayName("Netherite Spear")
-        .attackDamageBaseline(float_modifier(8, spear_damage_modifier))
-        .speedBaseLine(float_modifier(1.6, spear_speed_modifier))
+        .attackDamageBonus(float_modifier(8, spear_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, spear_speed_modifier)-4)
         .tooltip(spear_tooltip);
 
-    //Pike
+    //Glaive
     //Slower spear, but faster than a greatsword
-    e.create("golden_pike", 'basic')
-        .tool('sword')
+    e.create("golden_glaive", 'sword')
+        
         .tier('gold')
-        .group('combat')
-        .displayName("Golden Pike")
-        .attackDamageBaseline(float_modifier(4,pike_damage_modifier))
-        .speedBaseLine(float_modifier(1.6,pike_speed_modifier))
+        
+        .displayName("Golden Glaive")
+        .attackDamageBonus(float_modifier(4,glaive_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6,glaive_speed_modifier)-4)
         .maxDamage(int_modifier(32, two_hand_durability_bonus))
-        .tooltip(pike_tooltip);
+        .tooltip(glaive_tooltip);
 
-    e.create("wooden_pike", 'basic')
-        .tool('sword')
+    e.create("wooden_glaive", 'sword')
+        
         .tier('wood')
-        .group('combat')
-        .displayName("Wooden Pike")
-        .attackDamageBaseline(float_modifier(4,pike_damage_modifier))
-        .speedBaseLine(float_modifier(1.6,pike_speed_modifier))
+        
+        .displayName("Wooden Glaive")
+        .attackDamageBonus(float_modifier(4,glaive_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6,glaive_speed_modifier)-4)
         .maxDamage(int_modifier(59, two_hand_durability_bonus))
-        .tooltip(pike_tooltip);
+        .tooltip(glaive_tooltip);
 
-    e.create("stone_pike", 'basic')
-        .tool('sword')
+    e.create("stone_glaive", 'sword')
+        
         .tier('stone')
-        .group('combat')
-        .displayName("Stone Pike")
-        .attackDamageBaseline(float_modifier(5,pike_damage_modifier))
-        .speedBaseLine(float_modifier(1.6,pike_speed_modifier))
+        
+        .displayName("Stone Glaive")
+        .attackDamageBonus(float_modifier(5,glaive_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6,glaive_speed_modifier)-4)
         .maxDamage(int_modifier(131, two_hand_durability_bonus))
-        .tooltip(pike_tooltip);
+        .tooltip(glaive_tooltip);
 
 
-    e.create("iron_pike", 'basic')
-        .tool('sword')
+    e.create("iron_glaive", 'sword')
+        
         .tier('iron')
-        .group('combat')
-        .displayName("Iron Pike")
-        .attackDamageBaseline(float_modifier(6,pike_damage_modifier))
-        .speedBaseLine(float_modifier(1.6,pike_speed_modifier))
+        
+        .displayName("Iron Glaive")
+        .attackDamageBonus(float_modifier(6,glaive_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6,glaive_speed_modifier)-4)
         .maxDamage(int_modifier(250, two_hand_durability_bonus))
-        .tooltip(pike_tooltip);
+        .tooltip(glaive_tooltip);
 
 
-    e.create("diamond_pike", 'basic')
-        .tool('sword')
+    e.create("diamond_glaive", 'sword')
+        
         .tier('diamond')
-        .group('combat')
-        .displayName("Diamond Pike")
-        .attackDamageBaseline(float_modifier(7,pike_damage_modifier))
-        .speedBaseLine(float_modifier(1.6,pike_speed_modifier))
+        
+        .displayName("Diamond Glaive")
+        .attackDamageBonus(float_modifier(7,glaive_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6,glaive_speed_modifier)-4)
         .maxDamage(int_modifier(1561, two_hand_durability_bonus))
-        .tooltip(pike_tooltip);
+        .tooltip(glaive_tooltip);
 
 
-    e.create("netherite_pike", 'basic')
-        .tool('sword')
+    e.create("netherite_glaive", 'sword')
+        
         .tier('netherite')
-        .group('combat')
-        .displayName("Golden Pike")
-        .attackDamageBaseline(float_modifier(8,pike_damage_modifier))
-        .speedBaseLine(float_modifier(1.6,pike_speed_modifier))
+        
+        .displayName("Netherite Glaive")
+        .attackDamageBonus(float_modifier(8,glaive_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6,glaive_speed_modifier)-4)
         .maxDamage(int_modifier(2031, two_hand_durability_bonus))
-        .tooltip(pike_tooltip);
+        .tooltip(glaive_tooltip);
 
 
     //Greataxe
     //Two-handed
-    e.create("golden_greataxe", 'basic')
-        .tool('axe')
+    e.create("golden_greataxe", 'axe')
+        
         .tier('gold')
-        .group('combat')
+        
         .displayName("Golden Greataxe")
-        .attackDamageBaseline(float_modifier(7, greataxe_damage_modifier))
-        .speedBaseLine(float_modifier(1, greataxe_speed_modifier))
+        .attackDamageBonus(float_modifier(7, greataxe_damage_modifier)-4)
+        .speedBaseline(float_modifier(1, greataxe_speed_modifier)-4)
         .maxDamage(int_modifier(32, two_hand_durability_bonus))
         .tooltip(greataxe_tooltip);
 
-    e.create("wooden_greataxe", 'basic')
-        .tool('axe')
+    e.create("wooden_greataxe", 'axe')
+        
         .tier('wood')
-        .group('combat')
+        
         .displayName("Wooden Greataxe")
-        .attackDamageBaseline(float_modifier(7, greataxe_damage_modifier))
-        .speedBaseLine(float_modifier(0.8, greataxe_speed_modifier))
+        .attackDamageBonus(float_modifier(7, greataxe_damage_modifier)-4)
+        .speedBaseline(float_modifier(0.8, greataxe_speed_modifier)-4)
         .maxDamage(int_modifier(59, two_hand_durability_bonus))
         .tooltip(greataxe_tooltip);
 
-    e.create("stone_greataxe", 'basic')
-        .tool('axe')
+    e.create("stone_greataxe", 'axe')
+        
         .tier('stone')
-        .group('combat')
+        
         .displayName("Stone Greataxe")
-        .attackDamageBaseline(float_modifier(9, greataxe_damage_modifier))
-        .speedBaseLine(float_modifier(0.8, greataxe_speed_modifier))
+        .attackDamageBonus(float_modifier(9, greataxe_damage_modifier)-4)
+        .speedBaseline(float_modifier(0.8, greataxe_speed_modifier)-4)
         .maxDamage(int_modifier(131, two_hand_durability_bonus))
         .tooltip(greataxe_tooltip);
 
-    e.create("iron_greataxe", 'basic')
-        .tool('axe')
+    e.create("iron_greataxe", 'axe')
+        
         .tier('iron')
-        .group('combat')
+        
         .displayName("Iron Greataxe")
-        .attackDamageBaseline(float_modifier(9, greataxe_damage_modifier))
-        .speedBaseLine(float_modifier(0.9, greataxe_speed_modifier))
+        .attackDamageBonus(float_modifier(9, greataxe_damage_modifier)-4)
+        .speedBaseline(float_modifier(0.9, greataxe_speed_modifier)-4)
         .maxDamage(int_modifier(250, two_hand_durability_bonus))
         .tooltip(greataxe_tooltip);
 
-    e.create("diamond_greataxe", 'basic')
-        .tool('axe')
+    e.create("diamond_greataxe", 'axe')
+        
         .tier('diamond')
-        .group('combat')
+        
         .displayName("Diamond Greataxe")
-        .attackDamageBaseline(float_modifier(9, greataxe_damage_modifier))
-        .speedBaseLine(float_modifier(1, greataxe_speed_modifier))
+        .attackDamageBonus(float_modifier(9, greataxe_damage_modifier)-4)
+        .speedBaseline(float_modifier(1, greataxe_speed_modifier)-4)
         .maxDamage(int_modifier(1561, two_hand_durability_bonus))
         .tooltip(greataxe_tooltip);
 
-    e.create("netherite_greataxe", 'basic')
-        .tool('axe')
+    e.create("netherite_greataxe", 'axe')
+        
         .tier('netherite')
-        .group('combat')
+        
         .displayName("Netherite Greataxe")
-        .attackDamageBaseline(float_modifier(10, greataxe_damage_modifier))
-        .speedBaseLine(float_modifier(1, greataxe_speed_modifier))
+        .attackDamageBonus(float_modifier(10, greataxe_damage_modifier)-4)
+        .speedBaseline(float_modifier(1, greataxe_speed_modifier)-4)
         .maxDamage(int_modifier(2031, two_hand_durability_bonus))
         .tooltip(greataxe_tooltip);
+    //Katana
+    e.create("golden_katana", 'sword')
+        
+        .tier('gold')
+        
+        .displayName("Golden Katana")
+        .attackDamageBonus(float_modifier(4, katana_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, katana_speed_modifier)-4)
+        .maxDamage(int_modifier(32, two_hand_durability_bonus))
+        .tooltip(katana_tooltip);
+
+    e.create("wooden_katana", 'sword')
+        
+        .tier('wood')
+        
+        .displayName("Wooden Katana")
+        .attackDamageBonus(float_modifier(4, katana_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, katana_speed_modifier)-4)
+        .maxDamage(int_modifier(59, two_hand_durability_bonus))
+        .tooltip(katana_tooltip)
+
+    e.create("stone_katana", 'sword')
+        
+        .tier('stone')
+        
+        .displayName("Stone Katana")
+        .attackDamageBonus(float_modifier(5, katana_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, katana_speed_modifier)-4)
+        .maxDamage(int_modifier(131, two_hand_durability_bonus))
+        .tooltip(katana_tooltip)
+
+    e.create("iron_katana", 'sword')
+        
+        .tier('iron')
+        
+        .displayName("Iron Katana")
+        .attackDamageBonus(float_modifier(6, katana_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, katana_speed_modifier)-4)
+        .maxDamage(int_modifier(250, two_hand_durability_bonus))
+        .tooltip(katana_tooltip);
+
+    e.create("diamond_katana", 'sword')
+        
+        .tier('diamond')
+        
+        .displayName("Diamond Katana")
+        .attackDamageBonus(float_modifier(7, katana_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, katana_speed_modifier)-4)
+        .maxDamage(int_modifier(1561, two_hand_durability_bonus))
+        .tooltip(katana_tooltip)
+
+    e.create("netherite_katana", 'sword')
+        
+        .tier('netherite')
+        
+        .displayName("Netherite Katana")
+        .attackDamageBonus(float_modifier(8, katana_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, katana_speed_modifier)-4)
+        .maxDamage(int_modifier(2031, two_hand_durability_bonus))
+        .tooltip(katana_tooltip);
 
     //Kopesh
     // Slightly faster and a sword with a slight damage reduction
-    e.create("golden_kopesh", 'basic')
-        .tool('sword')
+    e.create("golden_kopesh", 'sword')
+        
         .tier('gold')
-        .group('combat')
+        
         .displayName("Golden Kopesh")
-        .attackDamageBaseline(float_modifier(4, kopesh_damage_modifier))
-        .speedBaseLine(1.8)
+        .attackDamageBonus(float_modifier(4, kopesh_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, kopesh_speed_modifier)-4)
         .tooltip(kopesh_tooltip);
 
-    e.create("wooden_kopesh", 'basic')
-        .tool('sword')
+    e.create("wooden_kopesh", 'sword')
+        
         .tier('wood')
-        .group('combat')
+        
         .displayName("Wooden Kopesh")
-        .attackDamageBaseline(float_modifier(4, kopesh_damage_modifier))
-        .speedBaseLine(float_modifier(1.6, kopesh_speed_modifier))
+        .attackDamageBonus(float_modifier(4, kopesh_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, kopesh_speed_modifier)-4)
         .tooltip(kopesh_tooltip)
 
-    e.create("stone_kopesh", 'basic')
-        .tool('sword')
+    e.create("stone_kopesh", 'sword')
+        
         .tier('stone')
-        .group('combat')
+        
         .displayName("Stone Kopesh")
-        .attackDamageBaseline(float_modifier(5, kopesh_damage_modifier))
-        .speedBaseLine(float_modifier(1.6, kopesh_speed_modifier))
+        .attackDamageBonus(float_modifier(5, kopesh_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, kopesh_speed_modifier)-4)
         .tooltip(kopesh_tooltip)
 
-    e.create("iron_kopesh", 'basic')
-        .tool('sword')
+    e.create("iron_kopesh", 'sword')
+        
         .tier('iron')
-        .group('combat')
+        
         .displayName("Iron Kopesh")
-        .attackDamageBaseline(float_modifier(6, kopesh_damage_modifier))
-        .speedBaseLine(float_modifier(1.6, kopesh_speed_modifier))
+        .attackDamageBonus(float_modifier(6, kopesh_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, kopesh_speed_modifier)-4)
         .tooltip(kopesh_tooltip);
 
-    e.create("diamond_kopesh", 'basic')
-        .tool('sword')
+    e.create("diamond_kopesh", 'sword')
+        
         .tier('diamond')
-        .group('combat')
+        
         .displayName("Diamond Kopesh")
-        .attackDamageBaseline(float_modifier(7, kopesh_damage_modifier))
-        .speedBaseLine(float_modifier(1.6, kopesh_speed_modifier))
+        .attackDamageBonus(float_modifier(7, kopesh_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, kopesh_speed_modifier)-4)
         .tooltip(kopesh_tooltip)
 
-    e.create("netherite_kopesh", 'basic')
-        .tool('sword')
+    e.create("netherite_kopesh", 'sword')
+        
         .tier('netherite')
-        .group('combat')
+        
         .displayName("Netherite Kopesh")
-        .attackDamageBaseline(float_modifier(8, kopesh_damage_modifier))
-        .speedBaseLine(float_modifier(1.6, kopesh_speed_modifier))
+        .attackDamageBonus(float_modifier(8, kopesh_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, kopesh_speed_modifier)-4)
         .tooltip(kopesh_tooltip);
 
     //Rapier
-    e.create("golden_rapier", 'basic')
-        .tool('sword')
+    e.create("golden_rapier", 'sword')
+        
         .tier('gold')
-        .group('combat')
+        
         .displayName("Golden Rapier")
-        .attackDamageBaseline(float_modifier(4, rapier_damage_modifier))
-        .speedBaseLine(float_modifier(1.6,rapier_speed_modifier))
+        .attackDamageBonus(float_modifier(4, rapier_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6,rapier_speed_modifier)-4)
         .tooltip(rapier_tooltip);
     
-    e.create("wooden_rapier", 'basic')
-        .tool('sword')
+    e.create("wooden_rapier", 'sword')
+        
         .tier('wood')
-        .group('combat')
+        
         .displayName("Wooden Rapier")
-        .attackDamageBaseline(float_modifier(4, rapier_damage_modifier))
-        .speedBaseLine(float_modifier(1.6,rapier_speed_modifier))
+        .attackDamageBonus(float_modifier(4, rapier_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6,rapier_speed_modifier)-4)
         .tooltip(rapier_tooltip);
 
-    e.create("stone_rapier", 'basic')
-        .tool('sword')
+    e.create("stone_rapier", 'sword')
+        
         .tier('stone')
-        .group('combat')
+        
         .displayName("Stone Rapier")
-        .attackDamageBaseline(float_modifier(5, rapier_damage_modifier))
-        .speedBaseLine(float_modifier(1.6,rapier_speed_modifier))
+        .attackDamageBonus(float_modifier(5, rapier_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6,rapier_speed_modifier)-4)
         .tooltip(rapier_tooltip);
 
-    e.create("iron_rapier", 'basic')
-        .tool('sword')
+    e.create("iron_rapier", 'sword')
+        
         .tier('iron')
-        .group('combat')
+        
         .displayName("Iron Rapier")
-        .attackDamageBaseline(float_modifier(6, rapier_damage_modifier))
-        .speedBaseLine(float_modifier(1.6,rapier_speed_modifier))
+        .attackDamageBonus(float_modifier(6, rapier_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6,rapier_speed_modifier)-4)
         .tooltip(rapier_tooltip);
 
-    e.create("diamond_rapier", 'basic')
-        .tool('sword')
+    e.create("diamond_rapier", 'sword')
+        
         .tier('diamond')
-        .group('combat')
+        
         .displayName("Diamond Rapier")
-        .attackDamageBaseline(float_modifier(7, rapier_damage_modifier))
-        .speedBaseLine(float_modifier(1.6,rapier_speed_modifier))
+        .attackDamageBonus(float_modifier(7, rapier_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6,rapier_speed_modifier)-4)
         .tooltip(rapier_tooltip);
 
-    e.create("netherite_rapier", 'basic')
-        .tool('sword')
+    e.create("netherite_rapier", 'sword')
+        
         .tier('netherite')
-        .group('combat')
+        
         .displayName("Netherite Rapier")
-        .attackDamageBaseline(float_modifier(8, rapier_damage_modifier))
-        .speedBaseLine(float_modifier(1.6,rapier_speed_modifier))
+        .attackDamageBonus(float_modifier(8, rapier_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6,rapier_speed_modifier)-4)
         .tooltip(rapier_tooltip);
 
     //Dagger
-    e.create("golden_dagger", 'basic')
-        .tool('sword')
+    e.create("golden_dagger", 'sword')
+        
         .tier('gold')
-        .group('combat')
+        
         .displayName("Golden Dagger")
-        .attackDamageBaseline(float_modifier(4, dagger_damage_modifier))
-        .speedBaseLine(float_modifier(1.6, dagger_speed_modifier))
+        .attackDamageBonus(float_modifier(4, dagger_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, dagger_speed_modifier)-4)
         .tooltip(dagger_tooltip);
 
-    e.create("wooden_dagger", 'basic')
-        .tool('sword')
+    e.create("wooden_dagger", 'sword')
+        
         .tier('wood')
-        .group('combat')
+        
         .displayName("Wooden Dagger")
-        .attackDamageBaseline(float_modifier(4, dagger_damage_modifier))
-        .speedBaseLine(float_modifier(1.6, dagger_speed_modifier))
+        .attackDamageBonus(float_modifier(4, dagger_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, dagger_speed_modifier)-4)
         .tooltip(dagger_tooltip);;
 
-    e.create("stone_dagger", 'basic')
-        .tool('sword')
+    e.create("stone_dagger", 'sword')
+        
         .tier('stone')
-        .group('combat')
+        
         .displayName("Stone Dagger")
-        .attackDamageBaseline(float_modifier(5, dagger_damage_modifier))
-        .speedBaseLine(float_modifier(1.6, dagger_speed_modifier))
+        .attackDamageBonus(float_modifier(5, dagger_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, dagger_speed_modifier)-4)
         .tooltip(dagger_tooltip);
 
-    e.create("iron_dagger", 'basic')
-        .tool('sword')
+    e.create("iron_dagger", 'sword')
+        
         .tier('iron')
-        .group('combat')
+        
         .displayName("Iron Dagger")
-        .attackDamageBaseline(float_modifier(6, dagger_damage_modifier))
-        .speedBaseLine(float_modifier(1.6, dagger_speed_modifier))
+        .attackDamageBonus(float_modifier(6, dagger_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, dagger_speed_modifier)-4)
         .tooltip(dagger_tooltip);
 
-    e.create("diamond_dagger", 'basic')
-        .tool('sword')
+    e.create("diamond_dagger", 'sword')
+        
         .tier('diamond')
-        .group('combat')
+        
         .displayName("Diamond Dagger")
-        .attackDamageBaseline(float_modifier(7, dagger_damage_modifier))
-        .speedBaseLine(float_modifier(1.6, dagger_speed_modifier))
+        .attackDamageBonus(float_modifier(7, dagger_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, dagger_speed_modifier)-4)
         .tooltip(dagger_tooltip);
 
-    e.create("netherite_dagger", 'basic')
-        .tool('sword')
+    e.create("netherite_dagger", 'sword')
+        
         .tier('netherite')
-        .group('combat')
+        
         .displayName("Netherite Dagger")
-        .attackDamageBaseline(float_modifier(8, dagger_damage_modifier))
-        .speedBaseLine(float_modifier(1.6, dagger_speed_modifier))
+        .attackDamageBonus(float_modifier(8, dagger_damage_modifier)-4)
+        .speedBaseline(float_modifier(1.6, dagger_speed_modifier)-4)
         .tooltip(dagger_tooltip);
 
 })
 
 var float_modifier = (value, modifier) => {
-    return parseFloat((value * modifier).toFixed(1))
+    return value * modifier
 }
 
 var int_modifier = (value, modifier) => {
